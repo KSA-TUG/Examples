@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{4}{0}{1}
+\beamer@sectionintoc {2}{Main Result}{14}{0}{2}
+\beamer@sectionintoc {3}{Lower Bound of $\operatorname {vu}(VT_{p,q}^{q-1})$}{16}{0}{3}
+\beamer@sectionintoc {4}{Upper Bound of $\operatorname {vu}(VT_{p,q}^{q-1})$}{23}{0}{4}

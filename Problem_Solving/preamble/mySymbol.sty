@@ -1,0 +1,436 @@
+%%
+%% This is file `MnSymbol.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% MnSymbol.dtx  (with options: `style')
+%% 
+%% These files are public domain.
+%% 
+\def\filedate{2007/01/21}
+\def\fileversion{v1.4}
+\ProvidesPackage{MnSymbol}[2007/01/21 v1.4 support for the MnSymbol font]
+\DeclareOption{mnsy}{%
+  \def\Mn@Load@Cal@Font{%
+    \DeclareMathAlphabet\mathcal  {OMS}{MnSymbolS}{m}{n}%
+    \SetMathAlphabet\mathcal{bold}{OMS}{MnSymbolS}{b}{n}}}
+\DeclareOption{cmsy}{%
+  \def\Mn@Load@Cal@Font{%
+    \DeclareMathAlphabet\mathcal  {OMS}{cmsy}{m}{n}%
+    \SetMathAlphabet\mathcal{bold}{OMS}{cmsy}{b}{n}}}
+\DeclareOption{abx}{%
+  \def\Mn@Load@Cal@Font{%
+    \DeclareFontFamily{OT1}{mathc}{}%
+    \DeclareFontShape{OT1}{mathc}{m}{n}{ <-> mathcm10 }{}%
+    \DeclareFontShape{OT1}{mathc}{b}{n}{ <-> mathcb10 }{}%
+    \DeclareMathAlphabet\mathcal{OT1}{mathc}{m}{n}%
+    \SetMathAlphabet\mathcal{bold}{OT1}{mathc}{b}{n}}}
+
+\newcommand*\Mn@Fake@Missing{
+  \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
+  \@ifundefined{mathfrak}{\RequirePackage{eufrak}}{}
+
+  \DeclareRobustCommand{\dagger}{\Mn@Text@With@MathVersion{\textdagger}}
+  \DeclareRobustCommand{\ddagger}{\Mn@Text@With@MathVersion{\textdaggerdbl}}
+  \DeclareRobustCommand{\mathparagraph}{\Mn@Text@With@MathVersion{\textparagraph}}
+  \DeclareRobustCommand{\mathsection}{\Mn@Text@With@MathVersion{\textsection}}
+%  \DeclareRobustCommand{\mathdollar}{\Mn@Text@With@MathVersion{\textdollar}}
+  \DeclareRobustCommand{\mathsterling}{\Mn@Text@With@MathVersion{\textsterling}}
+  \DeclareRobustCommand{\yen}{\Mn@Text@With@MathVersion{\textyen}}
+  \DeclareRobustCommand{\circledR}{\Mn@Text@With@MathVersion{\textcircled{%
+                                     \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont R}}}
+  \DeclareRobustCommand{\circledS}{\Mn@Text@With@MathVersion{\textcircled{%
+                                     \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont S}}}
+  \DeclareRobustCommand{\Re}{\mathfrak{R}}
+  \DeclareRobustCommand{\Im}{\mathfrak{I}}
+  \DeclareRobustCommand{\dotplus}{\dot{+}}
+  \DeclareRobustCommand{\thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
+  \DeclareRobustCommand{\thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
+  \let\hbar\undefined
+  \let\hslash\undefined
+  % Hack for backward compatibility with the MinionPro package:
+  % If the package is loaded then we do not need to define \hbar.
+  \@ifpackageloaded{MinionPro}{}{%
+    \DeclareRobustCommand{\hbar}{\middlebar h}}
+  \DeclareRobustCommand{\hslash}{\middleslash h}
+
+  \let\lneq\nleq
+  \let\gneq\ngeq
+  \let\precneqq\npreceq
+  \let\succneqq\nsucceq
+  \DeclareRobustCommand\veebar{\mathbin{\underline{\vee}}}
+  \DeclareRobustCommand\barwedge{\mathbin{\overline{\wedge}}}
+  \DeclareRobustCommand\doublebarwedge{\mathbin{\overline{\overline{\wedge}}}}
+  \DeclareRobustCommand\centerdot{\mathbin{\rule{0.15em}{0.15em}}}
+  \DeclareRobustCommand\divideontimes{\mathbin{\ooalign{$\div$\crcr$\times$}}}
+  \let\eth\undefined
+  \let\digamma\undefined
+  \let\varkappa\undefined
+  \let\backepsilon\undefined
+
+  \let\mho\undefined
+  \let\Finv\undefined
+  \let\Game\undefined
+  \let\Bbbk\undefined
+  \let\mapstochar\undefined
+  \let\lhook\undefined
+  \let\rhook\undefined
+}
+
+\ExecuteOptions{mnsy}
+\ProcessOptions\relax
+\@ifpackageloaded{amsmath}{}{\RequirePackage{amsmath}}
+\Mn@Fake@Missing
+\def\Set@Mn@Sym#1{\@tempcnta #1\relax}
+\def\Next@Mn@Sym{\advance\@tempcnta 1\relax}
+\def\Prev@Mn@Sym{\advance\@tempcnta-1\relax}
+
+\def\@Decl@Mn@Sym#1#2#3#4{\DeclareMathSymbol{#2}{#3}{#4}{#1}}
+\def\Decl@Mn@Sym#1#2#3{%
+  \if\relax\noexpand#1%
+    \let#1\undefined
+  \fi
+  \expandafter\@Decl@Mn@Sym\expandafter{\the\@tempcnta}{#1}{#3}{#2}%
+  \Next@Mn@Sym}
+\def\Decl@Mn@Alias#1#2#3{\Prev@Mn@Sym\Decl@Mn@Sym{#1}{#2}{#3}}
+\let\Decl@Mn@Char\Decl@Mn@Sym
+\def\Decl@Mn@Op#1#2#3{\def#1{\DOTSB#3\slimits@}}
+\def\Decl@Mn@Int#1#2#3{\def#1{\DOTSI#3\ilimits@}}
+
+\def\Decl@Mn@Delim#1#2#3#4{%
+  \if\relax\noexpand#1%
+    \let#1\undefined
+  \fi
+  \DeclareMathDelimiter{#1}{#2}{#3}{#4}{#3}{#4}}
+\def\Decl@Mn@Open#1#2#3{\Decl@Mn@Delim{#1}{\mathopen}{#2}{#3}}
+\def\Decl@Mn@Close#1#2#3{\Decl@Mn@Delim{#1}{\mathclose}{#2}{#3}}
+\DeclareFontFamily{U}  {MnSymbolA}{}
+\DeclareSymbolFont{MnSyA}         {U}  {MnSymbolA}{m}{n}
+\SetSymbolFont{MnSyA}       {bold}{U}  {MnSymbolA}{b}{n}
+
+\DeclareFontShape{U}{MnSymbolA}{m}{n}{
+    <-6>  MnSymbolA5
+   <6-7>  MnSymbolA6
+   <7-8>  MnSymbolA7
+   <8-9>  MnSymbolA8
+   <9-10> MnSymbolA9
+  <10-12> MnSymbolA10
+  <12->   MnSymbolA12}{}
+\DeclareFontShape{U}{MnSymbolA}{b}{n}{
+    <-6>  MnSymbolA-Bold5
+   <6-7>  MnSymbolA-Bold6
+   <7-8>  MnSymbolA-Bold7
+   <8-9>  MnSymbolA-Bold8
+   <9-10> MnSymbolA-Bold9
+  <10-12> MnSymbolA-Bold10
+  <12->   MnSymbolA-Bold12}{}
+
+\Mn@Load@Cal@Font
+\def\Mn@Bold{bold}
+\def\Mn@Text@With@MathVersion#1{
+  \ifx\Mn@Bold\math@version
+    \text{\bfseries#1}%
+  \else
+    \text{\mdseries#1}%
+  \fi}
+\Set@Mn@Sym{0}
+\Decl@Mn@Char\rightarrow             {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\to                  {MnSyA}{\mathrel}
+\Decl@Mn@Char\uparrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftarrow              {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\gets                {MnSyA}{\mathrel}
+\Decl@Mn@Char\downarrow              {MnSyA}{\mathrel}
+\Decl@Mn@Char\nearrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwarrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\swarrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\searrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\Rightarrow             {MnSyA}{\mathrel}
+\Decl@Mn@Char\Uparrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\Leftarrow              {MnSyA}{\mathrel}
+\Decl@Mn@Char\Downarrow              {MnSyA}{\mathrel}
+\Decl@Mn@Char\Nearrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\Nwarrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\Swarrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\Searrow                {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftrightarrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\updownarrow            {MnSyA}{\mathrel}
+\Decl@Mn@Char\neswarrow              {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwsearrow              {MnSyA}{\mathrel}
+\Decl@Mn@Char\Leftrightarrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\Updownarrow            {MnSyA}{\mathrel}
+\Decl@Mn@Char\Neswarrow              {MnSyA}{\mathrel}
+\Decl@Mn@Char\Nwsearrow              {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheadrightarrow      {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheaduparrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheadleftarrow       {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheaddownarrow       {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheadnearrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheadnwarrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheadswarrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\twoheadsearrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightarrowtail         {MnSyA}{\mathrel}
+\Decl@Mn@Char\uparrowtail            {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftarrowtail          {MnSyA}{\mathrel}
+\Decl@Mn@Char\downarrowtail          {MnSyA}{\mathrel}
+\Decl@Mn@Char\nearrowtail            {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwarrowtail            {MnSyA}{\mathrel}
+\Decl@Mn@Char\swarrowtail            {MnSyA}{\mathrel}
+\Decl@Mn@Char\searrowtail            {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightmapsto            {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\mapsto              {MnSyA}{\mathrel}
+\Decl@Mn@Char\upmapsto               {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftmapsto             {MnSyA}{\mathrel}
+\Decl@Mn@Char\downmapsto             {MnSyA}{\mathrel}
+\Decl@Mn@Char\nemapsto               {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwmapsto               {MnSyA}{\mathrel}
+\Decl@Mn@Char\swmapsto               {MnSyA}{\mathrel}
+\Decl@Mn@Char\semapsto               {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhookrightarrow        {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\hookrightarrow      {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhookuparrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhookleftarrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhookdownarrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhooknearrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhooknwarrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhookswarrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\lhooksearrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhookrightarrow        {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhookuparrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhookleftarrow         {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\hookleftarrow       {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhookdownarrow         {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhooknearrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhooknwarrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhookswarrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\rhooksearrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightharpoonccw        {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\rightharpoonup      {MnSyA}{\mathrel}
+\Decl@Mn@Char\upharpoonccw           {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\upharpoonleft       {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftharpoonccw         {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\leftharpoondown     {MnSyA}{\mathrel}
+\Decl@Mn@Char\downharpoonccw         {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\downharpoonright    {MnSyA}{\mathrel}
+\Decl@Mn@Char\neharpoonccw           {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwharpoonccw           {MnSyA}{\mathrel}
+\Decl@Mn@Char\swharpoonccw           {MnSyA}{\mathrel}
+\Decl@Mn@Char\seharpoonccw           {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightharpooncw         {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\rightharpoondown    {MnSyA}{\mathrel}
+\Decl@Mn@Char\upharpooncw            {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\upharpoonright      {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\restriction         {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftharpooncw          {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\leftharpoonup       {MnSyA}{\mathrel}
+\Decl@Mn@Char\downharpooncw          {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\downharpoonleft     {MnSyA}{\mathrel}
+\Decl@Mn@Char\neharpooncw            {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwharpooncw            {MnSyA}{\mathrel}
+\Decl@Mn@Char\swharpooncw            {MnSyA}{\mathrel}
+\Decl@Mn@Char\seharpooncw            {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftrightharpoonupdown {MnSyA}{\mathrel}
+\Decl@Mn@Char\updownharpoonleftright {MnSyA}{\mathrel}
+\Decl@Mn@Char\neswharpoonnwse        {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwseharpoonnesw        {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftrightharpoondownup {MnSyA}{\mathrel}
+\Decl@Mn@Char\updownharpoonrightleft {MnSyA}{\mathrel}
+\Decl@Mn@Char\neswharpoonsenw        {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwseharpoonswne        {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightleftharpoons      {MnSyA}{\mathrel}
+\Decl@Mn@Char\updownharpoons         {MnSyA}{\mathrel}
+\Decl@Mn@Char\neswharpoons           {MnSyA}{\mathrel}
+\Decl@Mn@Char\senwharpoons           {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftrightharpoons      {MnSyA}{\mathrel}
+\Decl@Mn@Char\downupharpoons         {MnSyA}{\mathrel}
+\Decl@Mn@Char\swneharpoons           {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwseharpoons           {MnSyA}{\mathrel}
+\Decl@Mn@Char\dashedrightarrow       {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\dashrightarrow      {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\dasharrow           {MnSyA}{\mathrel}
+\Decl@Mn@Char\dasheduparrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\dashedleftarrow        {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\dashleftarrow       {MnSyA}{\mathrel}
+\Decl@Mn@Char\dasheddownarrow        {MnSyA}{\mathrel}
+\Decl@Mn@Char\dashednearrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\dashednwarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\dashedswarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\dashedsearrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightspoon             {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\multimap            {MnSyA}{\mathrel}
+\Decl@Mn@Char\upspoon                {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftspoon              {MnSyA}{\mathrel}
+\Decl@Mn@Char\downspoon              {MnSyA}{\mathrel}
+\Decl@Mn@Char\nespoon                {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwspoon                {MnSyA}{\mathrel}
+\Decl@Mn@Char\swspoon                {MnSyA}{\mathrel}
+\Decl@Mn@Char\sespoon                {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightfilledspoon       {MnSyA}{\mathrel}
+\Decl@Mn@Char\upfilledspoon          {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftfilledspoon        {MnSyA}{\mathrel}
+\Decl@Mn@Char\downfilledspoon        {MnSyA}{\mathrel}
+\Decl@Mn@Char\nefilledspoon          {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwfilledspoon          {MnSyA}{\mathrel}
+\Decl@Mn@Char\swfilledspoon          {MnSyA}{\mathrel}
+\Decl@Mn@Char\sefilledspoon          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightfootline          {MnSyA}{\mathrel}
+\Decl@Mn@Char\upfootline             {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftfootline           {MnSyA}{\mathrel}
+\Decl@Mn@Char\downfootline           {MnSyA}{\mathrel}
+\Decl@Mn@Char\nefootline             {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwfootline             {MnSyA}{\mathrel}
+\Decl@Mn@Char\swfootline             {MnSyA}{\mathrel}
+\Decl@Mn@Char\sefootline             {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightfree              {MnSyA}{\mathrel}
+\Decl@Mn@Char\upfree                 {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftfree               {MnSyA}{\mathrel}
+\Decl@Mn@Char\downfree               {MnSyA}{\mathrel}
+\Decl@Mn@Char\nefree                 {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwfree                 {MnSyA}{\mathrel}
+\Decl@Mn@Char\swfree                 {MnSyA}{\mathrel}
+\Decl@Mn@Char\sefree                 {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightpitchfork         {MnSyA}{\mathrel}
+\Decl@Mn@Char\uppitchfork            {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\pitchfork           {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftpitchfork          {MnSyA}{\mathrel}
+\Decl@Mn@Char\downpitchfork          {MnSyA}{\mathrel}
+\Decl@Mn@Char\nepitchfork            {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwpitchfork            {MnSyA}{\mathrel}
+\Decl@Mn@Char\swpitchfork            {MnSyA}{\mathrel}
+\Decl@Mn@Char\sepitchfork            {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightrightarrows       {MnSyA}{\mathrel}
+\Decl@Mn@Char\upuparrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftleftarrows         {MnSyA}{\mathrel}
+\Decl@Mn@Char\downdownarrows         {MnSyA}{\mathrel}
+\Decl@Mn@Char\nenearrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwnwarrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\swswarrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\sesearrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightleftarrows        {MnSyA}{\mathrel}
+\Decl@Mn@Char\updownarrows           {MnSyA}{\mathrel}
+\Decl@Mn@Char\neswarrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwsearrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftrightarrows        {MnSyA}{\mathrel}
+\Decl@Mn@Char\downuparrows           {MnSyA}{\mathrel}
+\Decl@Mn@Char\swnearrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\senwarrows             {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightlsquigarrow       {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\leadsto             {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\rightsquigarrow     {MnSyA}{\mathrel}
+\Decl@Mn@Char\uplsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftlsquigarrow        {MnSyA}{\mathrel}
+\Decl@Mn@Char\downlsquigarrow        {MnSyA}{\mathrel}
+\Decl@Mn@Char\nelsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwlsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\swlsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\selsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightrsquigarrow       {MnSyA}{\mathrel}
+\Decl@Mn@Char\uprsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftrsquigarrow        {MnSyA}{\mathrel}
+\Decl@Mn@Char\downrsquigarrow        {MnSyA}{\mathrel}
+\Decl@Mn@Char\nersquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwrsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\swrsquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\sersquigarrow          {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrowleftright    {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\leftrightsquigarrow {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrowupdown       {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrowrightleft    {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrowdownup       {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrownesw         {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrownwse         {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrowswne         {MnSyA}{\mathrel}
+\Decl@Mn@Char\squigarrowsenw         {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrowright       {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\curvearrowright     {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrowup          {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrowleft        {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrowdown        {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrowne          {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrownw          {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrowsw          {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcurvearrowse          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrowright       {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrowup          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrowleft        {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\curvearrowleft      {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrowdown        {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrowne          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrownw          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrowsw          {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcurvearrowse          {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrowleftright    {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrowupdown       {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrowrightleft    {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrowdownup       {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrownesw         {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrownwse         {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrowswne         {MnSyA}{\mathrel}
+\Decl@Mn@Char\curvearrowsenw         {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftrightline          {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\relbar              {MnSyA}{\mathrel}
+\Decl@Mn@Char\updownline             {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\divides             {MnSyA}{\mathrel}
+\Decl@Mn@Char\neswline               {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\diagup              {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwseline               {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\diagdown            {MnSyA}{\mathrel}
+\Decl@Mn@Char\Leftrightline          {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\Relbar              {MnSyA}{\mathrel}
+\Decl@Mn@Char\Updownline             {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\parallel            {MnSyA}{\mathrel}
+\Decl@Mn@Char\Neswline               {MnSyA}{\mathrel}
+\Decl@Mn@Char\Nwseline               {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightvdash             {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\vdash               {MnSyA}{\mathrel}
+\Decl@Mn@Char\upvdash                {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\perp                {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftvdash              {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\dashv               {MnSyA}{\mathrel}
+\Decl@Mn@Char\downvdash              {MnSyA}{\mathrel}
+\Decl@Mn@Char\nevdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwvdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\swvdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\sevdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightmodels            {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\models              {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\vDash               {MnSyA}{\mathrel}
+\Decl@Mn@Char\upmodels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftmodels             {MnSyA}{\mathrel}
+\Decl@Mn@Char\downmodels             {MnSyA}{\mathrel}
+\Decl@Mn@Char\nemodels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwmodels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\swmodels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\semodels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightVdash             {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\Vdash               {MnSyA}{\mathrel}
+\Decl@Mn@Char\upVdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftVdash              {MnSyA}{\mathrel}
+\Decl@Mn@Char\downVdash              {MnSyA}{\mathrel}
+\Decl@Mn@Char\neVdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwVdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\swVdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\seVdash                {MnSyA}{\mathrel}
+\Decl@Mn@Char\rightModels            {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\VDash               {MnSyA}{\mathrel}
+\Decl@Mn@Char\upModels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\leftModels             {MnSyA}{\mathrel}
+\Decl@Mn@Char\downModels             {MnSyA}{\mathrel}
+\Decl@Mn@Char\neModels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\nwModels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\swModels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\seModels               {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcirclearrowright      {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcirclearrowup         {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\circlearrowleft     {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcirclearrowleft       {MnSyA}{\mathrel}
+\Decl@Mn@Char\rcirclearrowdown       {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcirclearrowright      {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcirclearrowup         {MnSyA}{\mathrel}
+  \Decl@Mn@Alias\circlearrowright    {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcirclearrowleft       {MnSyA}{\mathrel}
+\Decl@Mn@Char\lcirclearrowdown       {MnSyA}{\mathrel}
+
+%% vim:set ft=tex:
+%%
+%% End of file `MnSymbol.sty'.

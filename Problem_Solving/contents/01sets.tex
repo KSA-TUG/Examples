@@ -1,0 +1,383 @@
+% !TEX root = ./ProblemSolving.tex
+
+\chapter{Sets}\label{chap:sets}
+
+Set is the most important concept in mathematics.
+When we define a something or prove a theorem, we usually use the concept of sets.
+Thus the deep understanding of the concept of sets is a basic of mathematics.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sets}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We think of a \term{set} as a collection of distinct objects with a precise description that
+provides a way of deciding(in principle) whether a given objects is in it.
+
+Let $x$ and $y$ be two objects.
+We write $x=y$ when $x$ and $y$ are equal,
+that is, when they are precisely the same object.
+We write $x\neq y$ when $x$ and $y$ are not equal.
+
+\begin{defn}
+The objects in a set are its \term{elements} or \term{members}.
+When $x$ is an elements of $A$, we write \term{$x\in A$} and say \term{$x$ belong to $A$}.
+When $x$ is not in $A$, we write \term{$x\not\in A$}.
+\end{defn}
+%
+%
+A set can be specified by stating the common property of its objects.
+In particular, we write
+\[
+A=\left\{x\,\vert\, P(x)\right\}
+\]
+when $A$ is the set of all objects $x$ that have the property $P$.
+
+\begin{eg}
+We can specify the following sets:
+\begin{align*}
+\text{Suits} & = \{x\, \vert\, \text{$x$ is a suit in an Anglo-French deck of cards}\}\\
+\text{Even} & = \{x\, \vert\, \text{$x$ is an even natural number}\}\\
+\text{Odd} & = \{x\, \vert\, \text{$x$ is an odd natural number}\}\\
+\text{Prime} & = \{x\, \vert\, \text{$x$ is a prime natural number}\}
+\end{align*}
+\end{eg}
+%
+%
+If the number of its objects is finite, a set can be specified by listing its objects
+between braces. In particular, we write
+\[
+A = \{x_1, x_2, \ldots, x_n\}
+\]
+when $A$ contains the objects $x_1$, $\ldots$, $x_n$, and nothing else.
+
+\begin{eg}
+\begin{align*}
+\text{Suits} & = \{\clubsuit, \diamondsuit, \heartsuit, \spadesuit \}
+\end{align*}
+\end{eg}
+%
+%
+Sometimes, we may informally specify a set by listing some of its objects, and
+then let the context help us ``figure out" the rest. In particular, we write
+\[
+A = \{x_1, x_2, x_3, \ldots\}
+\]
+when $A$ contains the objects $x_1$, $x_2$, $x_3$, as well as other objects more or less
+determined by the context.
+This method is convenient when the number of objects of the set is infinite.
+It is also convenient when the number of objects of the set if finite but ``large".
+
+\begin{eg}
+\begin{align*}
+\text{Even} & = \{0, 2, 4, \ldots\}\\
+\text{Odd} & = \{1, 3, 5, \ldots\}
+\end{align*}
+\end{eg}
+
+\TIP{경우에 따라서 또는 사정에 따라서 자연수의 집합에 $0$을 포함시키기도 하고 제외시키기도 한다.
+이 책에서는 편의상 자연수의 집합에 $0$을 포함시키도록 하겠다.}
+We use the symbols $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, and $\mathbb{C}$
+to denote the following sets of numbers:
+\begin{itemize}
+\item $\mathbb{N} = \{0, 1,2,3,\ldots\}$ is the set of natural numbers.
+\item $\mathbb{Z} = \{\ldots, -2, -1, 0, 1, 2,\ldots\}$ is the set of integers.
+\item $\mathbb{Q} = \{\frac{a}{b}\,\vert\, \text{$a$, $b\in\mathbb{Z}$ and $b\neq0$}\}$ is the set of rational numbers.
+\item $\mathbb{R}$ is the set of real numbers.
+\item $\mathbb{C} = \{a+ib\,\vert\, \text{$a$, $b\in\mathbb{R}$ and $i=\sqrt{-1}$}\}$
+\end{itemize}
+
+
+\begin{defn}
+%The objects in a set are its \term{elements} or \term{members}.
+%When $x$ is an element of $A$, we write $x\in A$ and say \term{$x$ belong to $A$}.
+%When $x$ is not in $A$, we write $x\not\in A$.
+Sets $A$ and $B$ are \term{equal}, written $A=B$,
+if they have the same elements.
+The \term{empty set}, written $\emptyset$, is the unique set with no elements.
+\end{defn}
+
+
+\begin{eg}
+When we specify a set by listing its elements,
+their order does not matter.
+For instance, we have
+\[
+\text{Suits} = \{\clubsuit, \diamondsuit, \heartsuit, \spadesuit \} = \{\diamondsuit, \heartsuit, \clubsuit, \spadesuit \}
+\]
+And repetitions do not matter too.
+For instance, we have
+\[
+\text{Suits} = \{\clubsuit, \diamondsuit, \heartsuit, \spadesuit \}
+= \{\clubsuit, \clubsuit, \diamondsuit, \heartsuit, \spadesuit \}
+\]
+\end{eg}
+
+
+\begin{eg}[The Penny Problem]
+Given piles of pennies, we remove one coin from each pile to make one new pile.
+Each original pile shrinks by one,
+so each pile of size one disappears: $1,1,2,5$ becomes $1,4,4$, for example.
+We consider different orderings of the same list of sizes to be equivalent,
+so we restrict our attention to lists of positive integers in nondecreasing order.
+Let $S$ be the set of list that do not change.
+$$
+\begin{tabular}{cccc}
+ & & & $\bigcirc$\\
+ & & & $\bigcirc$\\
+ & & & $\bigcirc$\\
+ & & $\bigcirc$ & $\bigcirc$\\
+$\bigcirc$ & $\bigcirc$ & $\bigcirc$ & $\bigcirc$
+\end{tabular}
+\qquad \Longleftrightarrow \qquad
+\begin{tabular}{ccc}
+ & $\bigcirc$ & $\bigcirc$\\
+ & $\bigcirc$ & $\bigcirc$\\
+ & $\bigcirc$ & $\bigcirc$\\
+$\bigcirc$ & $\bigcirc$ & $\bigcirc$
+\end{tabular}
+$$
+Let $a$ be a list with $n$ piles,
+and let $b$ the resulting new list.
+If $a\in S$, meaning that $a$ and $b$ are the same, then $b$ also has $n$ piles.
+Since we introduce one new pile, exactly one pile must disappear.
+Thus $a$ has exactly one pile of size $1$.
+Thus $b$ also has exactly one pile of size $1$.
+This forces $a$ to have exactly one pile of size $2$.
+
+We continue this reasoning for $i$ from $1$ to $n-1$.
+From $a$ having one pile of size $i$, we conclude that $b$ has one pile of size $i$,
+and therefore that $a$ has one pile of size $i+1$.
+This gives us one pile of size $1$ through $n$.
+
+Let $T$ be the set of lists consisting of one pile of each size from $1$ through some natural number $n$.
+We have shown that every unchanged configuration has this from, so $S\subseteq T$.
+To complete the solution,
+we also check that all elements of $T$ remain unchanged.
+
+Consider the element of $T$ with piles of sizes $1,2,\ldots,n$.
+For each $i$ from $2$ to $n$, the pile of size $i$ becomes a pile of size $i-1$.
+The pile of size $1$ disappears, and the $n$ piles each contribute one coin to from a new pile of size $n$.
+The result the original list.
+Now we have proved that $S\subseteq T$ and $T\subseteq S$, so $S=T$.
+We have described all the unchanged lists.
+\end{eg}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Subsets}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\TIP{\centerline{For any set $A$, $\emptyset\subseteq A$.}}
+\begin{defn}
+Let $A$ and $B$ be sets.
+We say that $A$ is a \term{subset} of $B$, written $A\subseteq B$,
+if all elements of $A$ are also elements of $B$.
+And $B$ is a \term{proper subset} of a set $A$, written $A\subset B$,
+if $B$ is a subset of $A$ that is not $A$ itself.
+\end{defn}
+
+
+\begin{prop}
+Let $A$, $B$, and $C$ be sets.
+Then the following properties hold.
+\begin{myEnum}
+\item $A\subseteq A$
+\item If $A\subseteq B$ and $B\subseteq A$, then $A=B$.
+\item If $A\subseteq B$ and $B\subseteq C$, then $A\subseteq C$.
+\end{myEnum}
+\end{prop}
+
+
+\TIP{\centerline{$\mathcal{P}(A)=\{B\,|\,B\subseteq A\}$}}
+\begin{defn}
+The \term{power set} of a set $A$, denoted by $\mathcal{P}(A)$, is the set of all subsets of $A$.
+\end{defn}
+
+
+\begin{eg}
+Let $x\neq y$ and $A=\{x,y\}$. Then
+\[
+\mathcal{P}(A)=\left\{\emptyset,\{x\}, \{y\}, \{x,y\}\right\}
+\]
+\end{eg}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Set Operators}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{defn}
+Let $A$ and $B$ be sets.
+Their \term{union}, written $A\cup B$, consists of all elements in $A$ or $B$.
+Their \term{intersection}, written $A\cap B$, consists of all elements in both $A$ and $B$.
+Their \term{difference}, written $A-B$, consists of all elements of $A$ that are not in $B$.
+Two sets are \term{disjoint} if there intersection is the empty set $\emptyset$.
+If a set $A$ is contained in some universe $U$ under discussion,
+then the \term{complement} $A^c$ of $A$ is the set of elements of $U$ \myemph{not} in $A$.
+\end{defn}
+
+
+\begin{eg}
+Let $E$ and $O$ denote the sets of even numbers and odd numbers.
+We have $E\cap O=\emptyset$ and $E\cup O = \mathbb{Z}$.
+Within $\mathbb{Z}$, we have $E^c=O$.
+\end{eg}
+
+
+\begin{defn}
+In a \term{Venn Diagram}, an outer box represents the universe under consideration,
+and regions within the box correspond to sets.
+Non-overlaping regions corresponding to disjoint sets.
+\end{defn}
+
+
+\begin{eg}
+\mPic{venn.png}
+The four regions in the Venn diagram for two sets $A$ and $B$ represent $A\cap B$,
+$(A\cup B)^c$, $A-B$, and $B-A$.
+\end{eg}
+
+
+\begin{prop}
+\TIP{``P if and only if Q"라는 표현은 P라는 명제와 Q라는 명제가 동치(equivalent)라는 뜻으로 $\Leftrightarrow$을 사용하여 나타내기도 한다.
+
+이 문장을 증명하기 위해서는 ``P이면 Q이다"라는 문장과 ``Q이면 P이다"라는 문장 두개를 증명하면 된다.
+이와 관련된 자세한 내용은 이후 Logic 파트에서 알아보겠다.}
+Let $A$ and $B$ be sets.
+Then $A\subseteq B$ if and only if $A\cup B = B$.
+\end{prop}
+\begin{proof}
+($\Rightarrow$) Suppose that $A\subseteq B$.
+Then clearly $B\subseteq A\cup B$.
+On the other hand, if $x\in A\cup B$, then either $x\in A$ or $x\in B$,
+and in both cases we have $x\in B$.
+
+($\Rightarrow$)
+Suppose that $A\cup B = B$.
+Let $x\in A$.
+Then $x\in A\cup B$, which implies $x\in B$.
+\end{proof}
+
+
+\begin{prop}
+\TIP{The set operator $\cup$ is associative, we can conveniently
+drop the parenthesis when writing set expressions like $A\cup B\cup C$.}
+Let $A$, $B$, and $C$ be sets.
+Then
+\begin{myEnum}
+\item $A\cup A = A$\hfill\myem{(idempotency)}
+\item $A\cup B = B\cup A$\hfill\myem{(commutativity)}
+\item $(A\cup B)\cup C = A\cup(B\cup C)$\hfill\myem{(associativity)}
+\end{myEnum}
+\end{prop}
+\begin{proof}
+\myem{1.}
+\begin{align*}
+x\in A\cup A &\Leftrightarrow x\in A\ \text{or}\ x\in A\\
+&\Leftrightarrow x\in A.
+\end{align*}
+\myem{2.}
+\begin{align*}
+x\in A\cup B &\Leftrightarrow x\in A\ \text{or}\ x\in B\\
+&\Leftrightarrow  x\in B\ \text{or}\ x\in A\\
+&\Leftrightarrow  x\in B \cup A.
+\end{align*}
+\myem{3.}
+\begin{align*}
+x\in (A\cup B)\cup C &\Leftrightarrow x\in A\cup B\ \text{or}\ x\in C\\
+&\Leftrightarrow  x\in A\ \text{or}\ x\in B\ \text{or}\ x\in C\\
+&\Leftrightarrow  x\in A\ \text{or}\ x\in B\cup C\\
+&\Leftrightarrow  x\in A\cup(B \cup C).
+\end{align*}
+\end{proof}
+
+
+\begin{hw}
+Let $A$ and $B$ be sets.
+Show that $A\subseteq B$ if and only if $A\cap B=A$.
+\end{hw}
+
+
+\begin{hw}
+\TIP{The set operator $\cap$ is associative, we can conveniently
+drop the parenthesis when writing set expressions like $A\cap B\cap C$.}
+Let $A$, $B$, and $C$ be sets.
+Then prove the following properties.
+\begin{myEnum}
+\item $A\cap A = A$\hfill\myem{(idempotency)}
+\item $A\cap B = B\cap A$\hfill\myem{(commutativity)}
+\item $(A\cap B)\cap C = A\cap(B\cap C)$\hfill\myem{(associativity)}
+\end{myEnum}
+\end{hw}
+
+
+
+\begin{prop}
+Let $A$, $B$, and $C$ be sets.
+Then
+\begin{myEnum}
+\item $A\cup(A\cap B) = A$\hfill\myem{(absorption of $\cup$ over $\cap$)}
+\item $A\cap(A\cup B) = A$\hfill\myem{(absorption of $\cap$ over $\cup$)}
+\item $A\cup(B\cap C) = (A\cup B)\cap (A\cup C)$\hfill\myem{(distributivity of $\cup$ over $\cap$)}
+\item $A\cap(B\cup C) = (A\cap B)\cup (A\cap C)$\hfill\myem{(distributivity of $\cap$ over $\cup$)}
+\end{myEnum}
+\end{prop}
+\begin{proof}
+\myem{1.}
+Let $x\in A\cup(A\cap B)$.
+Then $x\in A$ or $x\in A\cap B\subseteq A$, and in both cases we have $x\in A$.
+Conversely, if $x\in A$, we clearly have $x\in A\cup(A\cap B)$.
+
+\myem{3.}
+Suppose that $x\in A\cup(B\cap C)$.
+Then $x\in A$ or $x\in B\cap C$.
+If $x\in A$, then $x\in A\cup B$ and $x\in A\cup C$.
+Thus $x\in (A\cup B)\cap(A\cup C)$.
+If $x\in B\cap C$, then $x\in B$ and $x\in C$.
+Thus $x\in A\cup B$ and $x\in A\cup C$.
+Therefore $x\in (A\cup B)\cap(A\cup C)$.
+
+Conversely, suppose that $x\in (A\cup B)\cap(A\cup C)$.
+Then $x\in A\cup B$ and $x\in A\cup C$.
+If $x\in A$, then clearly $x\in A\cup(B\cap C)$.
+If instead $x\not\in A$, we have $x\in B$ and $x\in C$.
+Thus $x\in B\cap C$.
+Therefore $x\in A\cup(B\cap C)$.
+\end{proof}
+
+
+\begin{hw}
+Let $A$ and $B$ be sets.
+Show that $A\subseteq B$ if and only if $A-B=\emptyset$.
+\end{hw}
+
+
+\begin{hw}
+Let $A$, $B$, and $C$ be sets.
+Prove the following properties.
+\begin{myEnum}
+\item $A-(B\cup C) = (A-B)\cap(A-C)$\hfill\myem{(de Morgan law for $\cup$)}
+\item $A-(B\cap C) = (A-B)\cup(A-C)$\hfill\myem{(de Morgan law for $\cap$)}
+\end{myEnum}
+\end{hw}
+
+
+\begin{defn}
+\TIP{\centerline{$A^2=A\times A$}
+
+\centerline{$A^k=\{(x_1,\ldots,x_k)\,|\,x_i\in A\}$}}
+A \term{list} with entries in $A$ consists of elements of $A$ in a specified order,
+with repetition allowed.
+A \term{$k$-tuple} is a list with $k$ entries.
+We write $A^k$ for the set of $k$-tuples with entries in $A$.
+An \term{ordered pair} is a list with two entries.
+The \term{Cartesian product} of sets $S$ and $T$, written $S\times T$,
+is the set $\{(x,y)\,|\, x\in S, y\in T\}$.
+Two ordered pairs $(a,b)$ and $(c,d)$ are \term{equal}, written $(a,b)=(c,d)$,
+if $a=c$ and $b=d$.
+\end{defn}
+

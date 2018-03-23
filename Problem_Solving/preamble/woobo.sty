@@ -1,0 +1,333 @@
+
+%%%%%                    TABU
+\usepackage{tabu}
+
+
+%%%%%                    LABELS
+\usepackage{showlabels,rotating}
+\renewcommand{\showlabelfont}{\color{blue}\small\slshape}
+%\renewcommand{\showlabelsetlabel}[1]{\begin{turn}{-90}\showlabelfont #1\end{turn}}
+
+
+%%%%%%%			COLORS
+\setlength{\fboxrule}{.5pt}
+
+\def\MakeColorCommand#1{%
+ \expandafter\def\csname CL#1\endcsname{\color{#1}}%
+}
+\def\DefineCOLOR#1#2#3{%
+ \definecolor{#1}{#2}{#3}%
+ \MakeColorCommand{#1}%
+}
+
+\DefineCOLOR{nicered}{cmyk}{0,.8,.77,.353}
+\DefineCOLOR{MBlue}{cmyk}{1,.53,0,.47}
+
+
+\definecolor{lightsteelblue}{cmyk}{.21, .12, 0, .13}
+\definecolor{antiquewhite}{cmyk}{0, .06, .14, .02}
+\definecolor{lightgoldenrodyellow}{cmyk}{0, 0, .16, .02}
+\definecolor{mediumspringgreen}{cmyk}{1, 0, .38, .02}
+
+\usepackage{colortbl}
+\def\rowgreen{\rowcolor{mediumspringgreen!10}}
+\def\rowyellow{\rowcolor{lightgoldenrodyellow!25}}
+\def\rowblue{\rowcolor{lightsteelblue!20}}
+\def\rowwhite{\rowcolor{antiquewhite!20}}
+\def\cellgreen{\cellcolor{mediumspringgreen!10}}
+\def\cellyellow{\cellcolor{lightgoldenrodyellow!25}}
+\def\cellblue{\cellcolor{lightsteelblue!20}}
+\def\cellhite{\cellcolor{antiquewhite!20}}
+
+
+
+%%%%%                    THEOREM-LIKE ENVIRONMENTS
+\usepackage{ntheorem,lipsum}
+\theorempreskipamount .5cm \theorempostskipamount .5cm
+\theoremstyle{change}
+%\theorembodyfont{\normalfont}
+\theoremheaderfont{\color{nicered}\sffamily\bfseries\large}
+\newtheorem{exa}{예제}[chapter]
+%\newtheorem{prob}{문제}[chapter]
+\newtheorem{epro}{연습문제}[chapter]
+
+%%%%Theorems
+\theoremstyle{plain}
+\theoremheaderfont{\color{nicered}\sffamily\bfseries\large}
+\newtheorem{axm}{Axiom}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{plain}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{nt}[thm]{Note}
+\theoremheaderfont{\color{SlateBlue}\sffamily\bfseries\large}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{hw}{Exercise}[chapter]
+
+
+\def\killoneline{\vspace*{-1.8\onelineskip}}
+\newcommand{\proofsymbol}{\color{nicered}\rule{25pt}{10pt}}
+\newcommand{\solsymbol}{\color{SlateBlue}\rule{25pt}{10pt}}
+
+\newenvironment{proof}[1][Proof]{\killoneline\begin{trivlist}
+\item[\hskip \labelsep {\color{nicered}\sffamily\bfseries\large #1}]}{\hfill\proofsymbol\end{trivlist}}
+
+\newenvironment{opf}[1][Other Proof]{\killoneline\begin{trivlist}
+\item[\hskip \labelsep {\color{nicered}\sffamily\bfseries\large #1}]}{\hfill\proofsymbol\end{trivlist}}
+
+\newenvironment{thmpf}[1][Proof of the Theorem]{\killoneline\begin{trivlist}
+\item[\hskip \labelsep {\color{nicered}\sffamily\bfseries\large #1}]}{\hfill\proofsymbol\end{trivlist}}
+
+\newenvironment{fpf}[1][First Proof]{\killoneline\begin{trivlist}
+\item[\hskip \labelsep {\color{nicered}\sffamily\bfseries\large #1}]}{\hfill\proofsymbol\end{trivlist}}
+
+\newenvironment{spf}[1][Second Proof]{\killoneline\begin{trivlist}
+\item[\hskip \labelsep {\color{nicered}\sffamily\bfseries\large #1}]}{\hfill\proofsymbol\end{trivlist}}
+
+\newenvironment{sol}[1][Solution]{\killoneline\begin{trivlist}
+\item[\hskip \labelsep {\color{SlateBlue}\sffamily\bfseries\large #1}]}{\hfill\solsymbol\end{trivlist}}
+
+
+%%%%%%%%%%%Package para writing the answers at the back de the book
+\usepackage{answers}
+\Newassociation{answer}{Answer}{probsemans}
+
+%\newcommand{\proofsymbol}{\Pisymbol{pzd}{113}}
+%\theoremstyle{nonumberplain} \theoremheaderfont{\sffamily\bfseries}
+%\theorembodyfont{\upshape}
+%\newenvironment{pf}[0]{\itshape\begin{quote}{\sffamily\bfseries 풀이:\ }}{\proofsymbol\end{quote}}
+%\newenvironment{opf}[0]{\itshape\begin{quote}{\sffamily\bfseries 다른풀이:\ }}{\proofsymbol\end{quote}}
+%\newenvironment{s-pf}[0]{\itshape\begin{quote}{\bf Second Proof: \ }}{\proofsymbol\end{quote}}
+%\newenvironment{t-pf}[0]{\itshape\begin{quote}{\bf Third Proof: \ }}{\proofsymbol\end{quote}}
+%\newenvironment{fo-pf}[0]{\itshape\begin{quote}{\bf Fourth Proof: \ }}{\proofsymbol\end{quote}}
+%\newenvironment{fi-pf}[0]{\itshape\begin{quote}{\bf Fifth Proof: \ }}{\proofsymbol\end{quote}}
+%\newenvironment{si-pf}[0]{\itshape\begin{quote}{\bf Sixth Proof: \ }}{\proofsymbol\end{quote}}
+%
+%\def\answer{\pf}
+%\def\endanswer{\endpf}
+%
+%\newenvironment{rem}[0]{\begin{quote}{\huge\textcolor{red}{\Pisymbol{pzd}{43}}}\itshape }{\end{quote}}
+
+\widowpenalty=1500
+
+
+
+%%%%HintBox
+\usepackage{framed}
+\newcommand\HintBox[2]{\definecolor{shadecolor}{cmyk}{.1,0,0,0}%
+\begin{shaded}
+\vspace*{-8pt}\hspace{-12pt}\colorbox{DarkSlateBlue}{\sffamily\bfseries{\large\color{white} \phantom{m}#1\phantom{MM}}}
+\medskip
+
+\sffamily #2\end{shaded}
+}
+
+
+
+%%%%%%% Term
+\long\def\term#1{%
+ \ifmmode\ensuremath{\color{MidnightBlue}\boldmath#1}%
+ \else
+ {\hangulfontspec{나눔고딕}\sffamily\bfseries\color{MidnightBlue}\boldmath#1}%
+ \fi
+% \index[term]{#1}%
+ \index{#1}%
+}
+
+\newcommand\mterm[1]{%
+  {\color{nicered}\ensuremath{\boldmath#1}}%
+%  \index[mterm]{$#1$}%
+}
+
+\def\myemph#1{
+ \ifmmode\ensuremath{\color{nicered}\boldmath#1}%
+ \else
+ {\hangulfontspec{나눔고딕}\sffamily\bfseries\color{nicered}\boldmath#1}%
+ \fi
+}
+
+\def\myem#1{
+ \ifmmode\ensuremath{\color{MidnightBlue}\boldmath#1}%
+ \else
+ {\hangulfontspec{나눔고딕}\sffamily\bfseries\color{MidnightBlue}\boldmath#1}%
+ \fi
+}
+
+
+\def\mybf#1{\textbf{\sffamily #1}}
+
+
+%%%%%%% dab
+\def\Dab#1{\hfill{\sffamily\bfseries 답:\quad #1}}
+
+%%%%%%% TIP
+%\def\TIP#1{\fbox{{\sffamily\bfseries TIP:} #1}}
+
+%\def\TIP#1{\marginpar{\scriptsize%
+%\begin{framed} \definecolor{mygreen}{cmyk}{.23, 0, .1, .55}
+%\vspace*{-8pt}\hspace{-12pt}\colorbox{mygreen}{\sffamily\bfseries{\large\color{white} \phantom{n} TIP \phantom{nn}}}
+%\medskip
+%
+%\sffamily #1\end{framed}}}
+
+\definecolor{mygreen}{cmyk}{.23, 0, .1, .55}
+
+\newcommand\TIP[2][\empty]{\definecolor{shadecolor}{cmyk}{0,0,.1,0}
+\ifx#1\empty
+  	\checkoddpage
+	\ifoddpage
+		\marginpar{\scriptsize%
+		\begin{shaded}
+		\vspace*{-8pt}\hfill\colorbox{mygreen}{\bfseries{\color{white} \phantom{n} \textsf{Note} \phantom{n}}}
+		\medskip
+		
+		\sffamily #2\end{shaded}}
+	\else
+		\marginpar{\scriptsize%
+		\begin{shaded}
+		\vspace*{-8pt}\colorbox{mygreen}{\bfseries{\color{white} \phantom{n} \textsf{Note} \phantom{n}}}
+		\medskip
+		
+		\sffamily #2\end{shaded}}
+	\fi
+\else
+  	\checkoddpage
+	\ifoddpage
+		\marginpar{\scriptsize%
+		\vspace*{#1}
+		\begin{shaded}
+		\vspace*{-8pt}\hfill\colorbox{mygreen}{\bfseries{\color{white} \phantom{n} \textsf{Note} \phantom{n}}}
+		\medskip
+		
+		\sffamily #2\end{shaded}}
+	\else
+		\marginpar{\scriptsize%
+		\vspace*{#1}
+		\begin{shaded}
+		\vspace*{-8pt}\colorbox{mygreen}{\bfseries{\color{white} \phantom{n} \textsf{Note} \phantom{n}}}
+		\medskip
+		
+		\sffamily #2\end{shaded}}
+	\fi
+\fi}
+
+
+%%%%%\mPic
+\def\mPic#1{
+		\marginpar{
+			\vtop{%
+			\vskip-1ex
+			\hbox{%
+				\includegraphics[width=\linewidth]{#1}%
+			}%
+			}%
+		}%
+}
+
+%%%%Enum
+\newenvironment{myEnum}{%
+\renewcommand{\labelenumi}{{\color{MidnightBlue}\sffamily\bfseries \arabic{enumi}.}}%
+\vspace{-8pt}\begin{enumerate}\itemsep=0pt\topsep=0pt\partopsep=0pt\parskip=0pt\parsep=0pt}{\end{enumerate}}
+%\begin{enumerate}\setlength\topsep{0pt}\setlength\partopsep{0pt}\setlength\itemsep{0pt}}{\end{enumerate}}
+
+
+\setlength\itemindent{1em}
+\newenvironment{DecoEnum}{%
+\renewcommand{\labelenumi}{{\color{MBlue}\bfseries \onum{enumi}}}%
+\begin{enumerate}}{\end{enumerate}}
+
+\RequirePackage{xob-paralist}
+\RequirePackage{tabto}
+\TabPositions{0cm,7cm,22cm}
+
+\makeatletter
+\let\ORIGitem=\item
+\def\Aitem{\ifnum\number\c@enumi<1\relax\else\tab\fi\ORIGitem}
+
+\newenvironment{Aenum}[1][\empty]{%
+  \let\ORIGitem=\item
+  \let\item=\Aitem
+\par\medskip\noindent
+  \begin{inparaenum}[\hspace{1em} \sffamily\bfseries 1.]}{\end{inparaenum}\let\item=\ORIGitem\par}
+
+\newenvironment{DecoAenum}[1][\empty]{%
+  \let\ORIGitem=\item
+  \let\item=\Aitem
+  \par\medskip
+  \begin{inparaenum}[\hspace{1em} {\color{MBlue}\bfseries \onum{enumi}}]}{\end{inparaenum}\let\item=\ORIGitem\par}
+\makeatother
+
+\definecolor{myblue}{cmyk}{1, .99, 0, .6}
+
+\newenvironment{Benum}{%
+\renewcommand{\labelenumi}{{\colorbox{myblue}{\color{white}\bfseries\sffamily \arabic{enumi}}}}%
+\renewcommand{\labelenumii}{\ovalbox{\bfseries\sffamily \roman{enumii}}}%
+\begin{enumerate}}{\end{enumerate}}
+
+
+%%%%Tag
+\makeatletter
+\def\tagform@#1{\maketag@@@{\dotfill\sffamily\bfseries#1\unskip\@@italiccorr}}
+\makeatother
+
+
+%%%%귀차니즘
+\def\F{\mathbf{F}}
+\def\C{\mathbf{C}}
+\def\R{\mathbf{R}}
+\def\Q{\mathbf{Q}}
+\def\Z{\mathbf{Z}}
+\def\N{\mathbf{N}}
+\def\a{\mathbf{a}}\def\b{\mathbf{b}}\def\c{\mathbf{c}}\def\d{\mathbf{d}}\def\e{\mathbf{e}}\def\f{\mathbf{f}}\def\g{\mathbf{g}}\def\h{\mathbf{h}}\def\i{\mathbf{i}}\def\j{\mathbf{j}}\def\k{\mathbf{k}}\def\l{\mathbf{l}}\def\m{\mathbf{m}}\def\n{\mathbf{n}}\def\o{\mathbf{o}}\def\p{\mathbf{p}}\def\q{\mathbf{q}}\def\r{\mathbf{r}}\def\s{\mathbf{s}}\def\t{\mathbf{t}}\def\u{\mathbf{u}}\def\v{\mathbf{v}}\def\w{\mathbf{w}}\def\x{\mathbf{x}}\def\y{\mathbf{y}}\def\z{\mathbf{z}}
+
+\def\seqa{\{a_n\}}
+\def\seqb{\{b_n\}}
+\def\seqc{\{c_n\}}
+\def\seqx{\{x_n\}}
+\def\seqy{\{y_n\}}
+\def\lto{\longrightarrow}
+\def\implies{\Rightarrow}
+\def\limplies{\Longrightarrow}
+\def\iff{\Leftrightarrow}
+\def\liff{\Longleftrightarrow}
+
+\def\eps{\varepsilon}
+\def\limxa{\lim\limits_{x\to a}}
+\def\liminf{\lim\limits_{x\to\infty}}
+\def\liminfm{\lim\limits_{x\to-\infty}}
+\def\limho{\lim\limits_{h\to0}}
+\def\limninf{\lim\limits_{n\to\infty}}
+
+
+\def\Dx{\Delta x}
+\def\Dy{\Delta y}
+\def\Dyx{\frac{\Dy}{\Dx}}
+\def\DD#1#2{\frac{\Delta #1}{\Delta #2}}
+\def\dyx{\frac{dy}{dx}}
+\def\ddyx{\frac{d^2y}{dx^2}}
+\def\dfx{\frac{df}{dx}}
+\def\ddx{\frac{d}{dx}}
+\def\dd#1#2{\frac{d #1}{d #2}}
+
+
+\usepackage{./preamble/mySymbol}
+\def\ccup{\lcurvearrowne}
+\def\cvup{\rcurvearrowne}
+\def\ccdown{\lcurvearrowse}
+\def\cvdown{\rcurvearrowse}
+
+
+\def\Id{\operatorname{Id}}
+\def\Img{\operatorname{Im}}
+\def\Inv#1{#1^{-1}}
+\def\Sym{\operatorname{Sym}}
+
+\def\myref#1{\mybf{\ref{#1}}}
+
+
+\def\pfskip{\newpage}
+\def\pfsmallskip{\vspace*{5cm}}
+

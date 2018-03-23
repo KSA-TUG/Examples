@@ -1,0 +1,212 @@
+\usepackage[svgnames]{xcolor}
+\usepackage{pdflscape}
+\usepackage{multicol}
+\usepackage{mathtools}
+
+
+%그래픽
+\usepackage{graphicx}
+\usepackage{./preamble/picins}
+
+
+%심볼
+\usepackage{stmaryrd}
+
+
+%%책 제목
+%\DeclareRobustCommand\Hbook[2][\@empty]{%
+%%\leavevmode
+%\ifx #1\@empty
+%	\ccnm{#2}%
+%\else
+%    \ifx\@currsize\small % ...likely sizes checked first
+%	\ccnm{#2{\footnotesize{#1}}}%
+%	\else
+%    \ifx\@currsize\footnotesize % ...likely sizes checked first
+%	\ccnm{#2{#1}}%
+%	\else
+%    \ifx\@currsize\normalsize% ...likely sizes checked first
+%	\ccnm{#2{\small{#1}}}%
+%	\else
+%	\ccnm{#2{\relsize{-1}{#1}}}%
+%\fi\fi\fi\fi
+%}
+
+
+%절,소절 등의 번호 모양 정의 
+%\renewcommand{\thesection}{\arabic{section}}%
+%\renewcommand{\thesubsection}{\arabic{subsection}}%
+
+\setsechook{%\clearpage%
+%\setcounter{footnote}{0}
+\setsecnumformat{\thesection\quad}}
+\setsecheadstyle{\sffamily\bfseries\Large\color{NavyBlue}}
+
+\setsubsechook{\setsecnumformat{\thesubsection\quad}}
+%\setbeforesubsecskip{\onelineskip}
+%\setsubsecheadstyle{\bfseries\color{SteelBlue}}
+\setsubsecheadstyle{\noindent\sffamily\bfseries\large\color{MidnightBlue}\rule{8pt}{8pt}\hspace{.5em}}
+
+%\setsubsubsechook{\setsecnumformat{\scshape(\arabic{subsubsection})\quad}}
+%\setbeforesubsubsecskip{.5\onelineskip}
+%\setsubsubsecheadstyle{\sffamily\color{SlateGray}}
+
+
+%본문에서 section까지 번호가 붙음.
+\setsecnumdepth{section}
+\maxsecnumdepth{section}
+
+%toc에서 section까지 번호가 붙음.
+\maxtocdepth{section}
+\settocdepth{section}
+
+
+%toc에서 간격 등 자잘한 설정
+\setlength{\cftbeforepartskip}{3\onelineskip}
+\renewcommand{\cftpartfont}{\sffamily}
+\setlength{\cftpartindent}{.3\linewidth}
+\cftpagenumbersoff{part}
+
+\renewcommand{\cftchapterfont}{\sffamily}
+\renewcommand{\cftchapterleader}{/}
+\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+
+\renewcommand{\cftsectionfont}{\sffamily}
+\renewcommand{\cftsectionindent}{2em}
+\renewcommand{\cftsectionnumwidth}{2em}
+
+
+
+%kotex 정의
+\newcommand\kotex{\texorpdfstring{\textsf{k}\textit{o}\kern-1.5pt\lower.15ex\hbox{.}\kern-1pt\protect\TeX}{ko.TeX}}
+
+
+
+%머릿글
+\setlength{\headwidth}{\textwidth}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\makepagestyle{companion}
+\makerunningwidth{companion}{\headwidth}
+\makeheadrule{companion}{\headwidth}{\normalrulethickness}
+\makeheadposition{companion}{flushright}{flushleft}{}{}
+\makepsmarks{companion}{%
+\let\@mkboth\markboth
+\def\chaptermark##1{\markboth{##1}{##1}}% % left & right marks
+\def\sectionmark##1{\markright{% % right mark
+\ifnum \c@secnumdepth>\z@
+%\thesection. \ % % section number
+\fi
+##1}}
+}
+\makeevenhead{companion}%
+{\normalfont\bfseries\thepage}{}{\normalfont\sffamily\bfseries Chapter\ \thechapter\quad \leftmark}
+\makeoddhead{companion}%
+{\normalfont\sffamily\bfseries Section\ \thesection\quad \rightmark}{}{\normalfont\bfseries\thepage}
+
+%바닥글
+\makeevenfoot{companion}%
+{\copyright\ $\omega oo \beta o$}{}{}
+\makeoddfoot{companion}%
+{}{}{\copyright\ $\omega oo \beta o$}
+
+
+
+%참고문헌에서 간략한 자료 설명
+\providecommand\bibnote[2][\@empty]{%
+%\newline
+\nopagebreak\begin{spacing}{1.2}%
+	\ifx#1\@empty
+	{\relsize{-1}{#2}}%
+	\else
+	{\relsize{-1}{#2\newline\url{#1}}}%
+	\fi
+\end{spacing}\vspace{\bibitemsep}%
+}
+%\setlength{\bibitemsep}{-\parsep}
+
+
+%찾아보기의 레이아웃
+%\begin{comment}
+\onecolindextrue
+\renewenvironment{theindex}{%
+\if@twocolumn
+\@restonecolfalse
+\else
+\@restonecoltrue
+\fi
+\ifonecolindex
+\onecolumn
+\chapter*{\indexname}
+\preindexhook
+\begin{spacing}{1.2}\small
+\begin{multicols}{3}
+\else
+\twocolumn[\@makeschapterhead{\indexname}
+\preindexhook]%
+\fi
+\indexmark
+\setlength{\columnseprule}{\indexrule}
+\setlength{\columnsep}{2\indexcolsep}
+\ifnoindexintoc\else
+\phantomsection
+\addcontentsline{toc}{chapter}{\indexname}
+\fi
+\thispagestyle{chapter}\parindent\z@
+\parskip\z@ \@plus .3\p@\relax
+\let\item\@idxitem}
+{\ifonecolindex
+\end{multicols}
+\end{spacing}
+\else
+\if@restonecol\onecolumn\else\twocolumn\fi
+\fi}
+%\end{comment}
+
+
+%새로운 part의 정의
+\DeclareRobustCommand\NewTitle[1]{%
+\null\thispagestyle{empty}
+	\addcontentsline{toc}{part}{#1}
+\vspace*{12\onelineskip}
+\begin{center}
+\fontspec{Chalkduster}\huge \bfseries\color{DarkSlateBlue} #1
+\end{center}
+	\cleardoublepage}
+
+
+%%chapterstyle
+
+\newlength{\numberheight}
+\makechapterstyle{TroelsPedersen}{%
+\renewcommand{\chapnamefont}{\normalfont\bfseries\LARGE}
+\renewcommand{\chapnumfont}{\sffamily\bfseries\HUGE\color{DarkSlateBlue}}
+\renewcommand{\chaptitlefont}{\sffamily\bfseries\huge\color{DarkSlateBlue}}
+\renewcommand{\afterchapternum}{}
+\renewcommand{\printchaptername}{} %%% meaningless in memhangul
+\renewcommand{\prechapternum}{} %%% memhangul
+\renewcommand{\postchapternum}{} %%% memhangul
+\renewcommand{\hchaptertitlehead}{\thechapter.} %%% memhangul
+\setlength{\numberheight}{20mm}
+\renewcommand{\chapternamenum}{}%
+\renewcommand{\printchapternum}{%
+\sidebar{\makebox[0pt][l]{%
+\resizebox{!}{\numberheight}{\chapnumfont\thechapter}}%
+}}%
+\renewcommand\printchaptertitle[1]{\chaptitlefont##1}
+\setlength{\beforechapskip}{20pt}
+\setlength{\midchapskip}{0pt}
+\setlength{\afterchapskip}{4\onelineskip}%{10pt}
+\setlength{\cftchapterindent}{0pt}
+\setlength{\cftchapternumwidth}{1.8em}
+\setlength{\cftbeforechapterskip}{1.8em}
+}
+
+\AtBeginDocument{% 
+%\oblivoirchapterstyle{TroelsPedersen}
+\chapterstyle{TroelsPedersen}
+}
+
+
+\hyphenation{%
+full-stop-low-er ex-cla-ma-tion-low-er ques-tion-low-er serif-hangul-font sans-hangul-font mono-hangul-font serif-hanja-font sans-hanja-font mono-hanja-font Han-geul Han-gul per-ceiving kotex-font}

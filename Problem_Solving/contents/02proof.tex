@@ -1,0 +1,838 @@
+% !TEX root = ./ProblemSolving.tex
+
+\chapter{Language of Mathematics}\label{chap:language}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mathematical Statement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+A \term{proposition} or \term{mathematical statement} is a sentence which is either true or false, but not both.
+Consider following list.
+\begin{myEnum}
+\item $\pi = 3$.
+\item $1+1=2$.
+\item $12$ may be written as the sum of two prime numbers.
+\item The square of even integer is even.
+\item Every even integer greater than $2$ may be written as the sum of two prime numbers.
+\item $n$ is a prime number.
+\item $n^2-2n>2$.
+\item $m<n$
+\item $12-11$.
+\item $\pi$ is a special number.
+\end{myEnum}
+
+\TIP[-30pt]{The Goldbach conjecture is suggested by Christian Goldbach
+and it might be true in a letter to Leonhard Euler written in 1742.}
+The first five statements \mybf{1} to \mybf{5} are propositions.
+In fact \mybf{1} is false and 
+the statement \mybf{5} is not yet proved, called \term{Goldbach conjecture}.
+Statements \mybf{2}, \mybf{3}, and \mybf{4} are true.
+
+For other statements, we can not determine whether true or false.
+Thus they are not propositions.
+The statement \mybf{6} and \mybf{7} become propositions once a numerical \term{value} is assigned to $n$.
+For example, if $n=2$, then \mybf{6} is true and \mybf{7} is false,
+whereas if $n=3$ then they are both true.
+Similarly, \mybf{8}  becomes a proposition when values are assigned to both $m$ and $n$.
+Sentence of this type are called \term{predicates}.
+The symbols which need to be given values in order to obtain a propositions are called \term{free variables}.
+
+The word \term{statement} will be used to denote either a proposition or predicate.
+So in the above, the first eight items are statements.
+We will use a single capital letter $P$ or $Q$ to indicate a statement,
+or sometimes an expression like $P(m,n)$ to indicate a predicate,
+with the free variables listed.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Logical Connectives}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Or}
+
+Consider the following statement:
+\begin{quotation}
+For integers $a$ and $b$, $ab=0$ if $a=0$ or $b=0$.
+\end{quotation}
+\TIP{일상생활에서 사용하는 언어에서 \myem{or}는 \myem{exclusive or}의 뜻으로 쓰인다.
+예를 들어 \myem{every student will take Pass or Fail on the research course.}라는 문장에서 or는
+exclusive or의 뜻으로 Pass와 Fail을 동시에 받을 수 없음을 내포하고 있다.}
+The statement \myem{$a=0$ or $b=0$} is true if $a=0$ (regardless of the value of $b$)
+and is also true if $b=0$ (regardless of the value of $a$).
+Notice that the statement is true of both $a=0$ and $b=0$ are true.
+This called the \term{inclusive} use of \term{or}.
+Any statement may be either true or false:
+we say that \term{true} and \term{false} are the two possible \term{truth values}
+for the statement.
+So given two statements $P$ and $Q$ each has two possible truth values
+giving four possible combinations in all.
+The \term{truth table} for \myem{or} which follows specifies the truth value for
+\myem{$P$ or $Q$} corresponding to each possible combination of truth value for $P$ and for $Q$,
+one line for each.
+In the table, $T$ indicates \myem{true} and $F$ indicates \myem{false}.
+$$
+\begin{tabular}{cc|c}
+$P$ & $Q$ & $P$ or $Q$\\ \hline
+$T$ & $T$ & $T$\\
+$T$ & $F$ & $T$\\
+$F$ & $T$ & $T$\\
+$F$ & $F$ & $F$
+\end{tabular}
+$$
+\myem{$P$ or $Q$} is called the \term{disjunction} of the two statements $P$ and $Q$.
+And we use $\vee$ indicate disjunction, so $P\vee Q$ means $P$ or $Q$.
+
+
+\begin{eg}
+The connection \myem{or} is sometimes hidden in other notation.
+\begin{myEnum}
+\item $a\leq b$ means $a<b$ or $a=b$.
+\item $a=\pm b$ means $a=b$ or $a=-b$.
+\end{myEnum}
+\end{eg}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{And}
+
+If we assert that
+\begin{quotation}
+$\pi$ lies between $3$ and $4$
+\end{quotation}
+or in symbols
+\begin{quotation}
+$3<\pi<4$
+\end{quotation}
+then this means that
+\begin{quotation}
+$\pi>3$ and $\pi<4$
+\end{quotation}
+which is called \term{conjunction} of the two statements \myem{$\pi>3$} and \myem{$\pi<4$}.
+And we use $\wedge$ indicate conjunction, so $P\wedge Q$ means $P$ and $Q$.
+We have the following truth table for \term{and}.
+$$
+\begin{tabular}{cc|c}
+$P$ & $Q$ & $P$ and $Q$\\ \hline
+$T$ & $T$ & $T$\\
+$T$ & $F$ & $F$\\
+$F$ & $T$ & $F$\\
+$F$ & $F$ & $F$
+\end{tabular}
+$$
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Not}
+Finally we have the idea of the \term{negation} of a statement.
+The negation of a statement is true when the original statement is false and
+it is false when the original statement is true.
+This described by the following truth table.
+$$
+\begin{tabular}{c|c}
+$P$ & not $P$\\ \hline
+$T$ & $F$\\
+$F$ & $T$
+\end{tabular}
+$$
+
+
+\TIP{일상에서 사용하는 언어에서는 어느 정도의 모호한 말을 하더라고 듣는 사람이
+전후사정을 감안하여 이해한다.
+그러나 수학에서는 모호함을 완전히 배재한 문장을 구사해야 한다.}
+\begin{eg}
+What is the negation of \myem{All students are male}?
+Some would say, incorrectly, \myem{All student is not male}.
+The correct negation is \myem{At least one student is not male}.
+\end{eg}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantifiers and Logical Statements}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quantifiers}
+
+\begin{defn}
+In the statement
+\begin{quotation}
+For all $x$ in $S$, $P(x)$ is true.
+\end{quotation}
+the variable $x$ is \term{universally quantified}.
+We write this as
+\[
+(\forall x\in S)\,P(x)
+\]
+and say that $\forall$ is a \term{universal quantifier}.
+In
+\begin{quotation}
+There exists an $x$ in $S$ such that $P(x)$ is true.
+\end{quotation}
+the variable $x$ is \term{existentially quantified}.
+We write this as
+\[
+(\exists x\in S)\,P(x)
+\]
+and say that $\exists$ is an \term{existential quantifier}.
+The set of allowed values for a variable is its \term{universe}.
+\end{defn}
+
+Typically, \myem{every} and \myem{for all} represent universal quantifiers,
+while \myem{some} and \myem{there is} represent existential quantifiers.
+Following list is common indicators of quantification.
+$$
+\begin{tabular}{ll|ll}\hline
+Universal ($\forall$) & (helpers) & Existential ($\exists$) & (helpers) \\ \hline
+for (all), for every & & for some & \\
+if & then & there exists & such that\\
+whenever, for ,given & & at least one & for which\\
+every, any & satisfies & some & satisfies\\
+a, arbitrary & must, is & has a & such that\\
+let & be & & \\ \hline
+\end{tabular}
+$$
+Sometimes the \term{helper} may be absent.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Order of Quantifiers}
+
+\begin{eg}
+Consider the sentence
+\begin{quote}
+There is a real number $y$ such that $x=y^3$ for every real number $x$.
+\end{quote}
+It seems to say that some number $y$ is the cube root of all numbers,
+which is false.
+To say that every number has a cube root, we write
+\begin{quote}
+For every real number $x$, there is a real number $y$ such that $x=y^3$.
+\end{quote}
+\end{eg}
+
+
+Compare the statements below.
+\[
+(\forall x\in A)(\exists y\in B)\, P(x,y) \qquad\qquad (\exists y\in B)(\forall x\in A)\, P(x,y)
+\]
+The first statement is true if for each $x$ we can take a $y$ that works.
+For the second statement to be true,
+there must be a single $y$ that will always work,
+no matter which $x$ is chosen.
+
+\begin{eg}
+Let $A$ be the set of all children, let $B$ be the set of all parents,
+and let $P(x,y)$ be \myem{$y$ is the parent of $x$}.
+Then
+\begin{myEnum}
+\item $(\forall x\in A)(\exists y\in B)\, P(x,y)$:
+For all children, there is a parent.
+\item $(\exists y\in B)(\forall x\in A)\, P(x,y)$:
+There is a parent who is the parent of all children.
+\end{myEnum}
+The first statement is true, but the second statement is to strong and is not true.
+\end{eg}
+
+
+\begin{eg}
+Let $A=B=\mathbb{R}$, and let $P(x,y)$ be $xy=0$.
+Then following statements are true.
+\begin{myEnum}
+\item $(\forall x\in A)(\exists y\in B)\, P(x,y)$:
+For all $x\in\mathbb{R}$, there is a $y\in\mathbb{R}$ such that $xy=0$.
+\item $(\exists y\in B)(\forall x\in A)\, P(x,y)$:
+There is a $y\in\mathbb{R}$ such that $xy=0$ for all $x\in\mathbb{R}$.
+\end{myEnum}
+\end{eg}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Negation of Quantified Statements}
+
+After placing a statement involving quantifiers in the conventional order,
+negating the statement is easy.
+If it is false that $P(x)$ is true for every value of $x$,
+then there must be some value of $x$ such that $P(x)$ is false,
+and vise versa.
+Similarly, if it is false that $P(x)$ is true for some value of $x$,
+then $P(x)$ is false for every value of $x$.
+Thus in notatin,
+\begin{quotation}
+$\neg[(\forall x)\,P(x)]$ has the same meaning as $(\exists x)(\neg P(x))$.
+
+$\neg[(\exists x)\,P(x)]$ has the same meaning as $(\forall x)(\neg P(x))$.
+\end{quotation}
+Note that when using logical symbols, we may add matched parentheses or brackets to clarify grouping.
+
+
+\begin{eg}
+The negation of \myem{Every good boy does fine} is \myem{Some good boy does not do fine};
+it says noting about bad boys.
+Similarly, the negation of \myem{Every chair in this room is broken} is \myem{Some chair in this room is not broken};
+it says nothing about chairs outside this room.
+\end{eg}
+
+
+
+\begin{eg}
+Negate the statement $(\forall n\in\mathbb{N})(\exists x\in A)(nx<1)$.
+\end{eg}
+\begin{sol}
+The negation is $(\exists n\in\mathbb{N})(\forall x\in A)(nx\ge 1)$.
+This means that the set $A$ has a lower bound that is the reciprocal of an integer.
+It does not mention values of $n$ outside $\mathbb{N}$ or values of $x$ outside $A$.
+\end{sol}
+
+
+\begin{eg}
+Rephrase the following statement so that it is clear.
+
+\centerline{\myem{It is false that every classroom has a chair that is not broken.}}
+\end{eg}
+\begin{sol}
+The qualifiers make it improper to cancel the \myem{double negative};
+the sentence \myem{every classroom has a chair that is broken} has a different meaning.
+
+Let $R$ denote the set of classrooms.
+Given a room $r$, let $C(r)$ denote the set of chairs in $r$.
+For a chair $c$, let $B(c)$ be the statement that $c$ is broken.
+Then
+\begin{align*}
+& \neg\left[(\forall r\in R)(\exists c\in C(r))(\neg B(c))\right]\tag{1}\\
+\Longrightarrow \ & (\exists r \in R)\left(\neg\left[(\exists c\in C(r))(\neg B(c))\right]\right)\tag{2}\\
+\Longrightarrow \ & (\exists r \in R)(\forall c\in C(r))\, B(c)\tag{3}\\
+\end{align*}
+Each symbolic statement means
+\begin{myEnum}
+\item It is false that every classroom has a chair that is not broken.
+\item There is a classroom that has no chair that is not broken.
+\item There is a classroom in which every chair is broken.
+\end{myEnum}
+Therefore the given statement mean that
+
+\centerline{\myem{There is a classroom in which every chair is broken.}}
+\end{sol}
+
+
+%%\begin{eg}
+%%Negate the statement every classroom has a chair that is not broken.
+%%\end{eg}
+%%\begin{sol}
+%%The negation is
+%%
+%%\centerline{\myem{It is false that every classroom has a chair that is not broken.}}
+%%
+%%The qualifiers make it improper to cancel the \myem{double negative};
+%%the sentence \myem{every classroom has a chair that is broken} has a different meaning.
+%%
+%%Let $R$ denote the set of classrooms.
+%%Given a room $r$, let $C(r)$ denote the set of chairs in $r$.
+%%For a chair $c$, let $B(c)$ be the statement that $c$ is broken.
+%%Then
+%%\begin{align*}
+%%& \neg\left[(\forall r\in R)(\exists c\in C(r))(\neg B(c))\right]\tag{1}\\
+%%\Longrightarrow \ & (\exists r \in R)\left(\neg\left[(\exists c\in C(r))(\neg B(c))\right]\right)\tag{2}\\
+%%\Longrightarrow \ & (\exists r \in R)(\forall c\in C(r))\, B(c)\tag{3}\\
+%%\end{align*}
+%%Each symbolic statement means
+%%\begin{myEnum}
+%%\item It is false that every classroom has a chair that is not broken.
+%%\item There is a classroom that has no chair that is not broken.
+%%\item There is a classroom in which every chair is broken.
+%%\end{myEnum}
+%%Therefore the negation is \myem{There is a classroom in which every chair is broken}.
+%%\end{sol}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Compound Statements}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{defn}
+Let $P$ and $Q$ be statements.
+The logical connective \term{conditional}, written by $P\Rightarrow Q$, means that
+$P$ implies $Q$.
+And \term{biconditional}, written by $P\Leftrightarrow Q$, means that
+$P$ if and only if $Q$.
+
+In the conditional statement $P\Rightarrow Q$, we call $P$ the \term{hypothesis} and
+$Q$ the \term{conclusion}.
+The statement $Q\Rightarrow P$ is the converse of $P\Rightarrow Q$.
+\end{defn}
+
+
+Conditional statements are the only type $P\implies Q$ whose meaning changes when $P$ and $Q$ are interchanged.
+There is no general relationship between the truth values of $P\implies Q$ and $Q\implies P$.
+
+
+\begin{eg}
+Let $x$ be a real number, and $P$ be the statement $x>0$, $Q$ be $x^2>0$, and $R$ be $x+1>1$.
+Here $P\implies Q$ is true but $Q\implies P$ is false.
+On the other hand, both $P\implies R$ and $R\implies P$ are true.
+\end{eg}
+
+It may be helpful to read the conditional as \myem{if-then} instead of \myem{implies}.
+The following list show that the way to say $P\implies Q$ in English.
+$$
+\begin{tabular}{llll}
+If $P$ (is true), then $Q$ (is true). & & $P$ is true only if $Q$ is true.\\
+$Q$ is true whenever $P$ is true. & & $P$ is a sufficient condition for $Q$.\\
+$Q$ is true if $P$ is true. & & $Q$ is a necessary condition for $P$.
+\end{tabular}
+$$
+
+
+The mathematician defines a truth table for $P\implies Q$ just as he does for
+$\neg$, $\vee$, and $\wedge$.
+But the definition is not at all obvious.
+The following example may help before we give the truth table.
+Consider the sentence
+\begin{quotation}
+If I get A+ in mathematics, then I will serve pizza for all students.
+\end{quotation}
+Suppose a student says this.
+When is he telling the truth and when is he lying?
+Examine the following four cases where $P$ means \myem{I get an A+ in mathematics}
+and $Q$ means \myem{I will serve pizza for all students}.
+\begin{myEnum}
+\item $P$ is true: He get an A+ in mathematics\\
+$Q$ is true: He serves pizza for all students
+
+\item $P$ is true: He get an A+ in mathematics\\
+$Q$ is false: He does not serve pizza for all students
+
+\item $P$ is false: He does not get an A+ in mathematics\\
+$Q$ is true: He serves pizza for all students
+
+\item $P$ is false: He does not get an A+ in mathematics\\
+$Q$ is false: He does not serve pizza for all students
+\end{myEnum}
+In case \mybf{1}, it is reasonable to agree that the student was telling the truth; his claim is true.
+In case \mybf{2}, it is easy to agree that he lied, and his claim was false.
+In case \mybf{3}, you could not call him a liar since he serves pizza even though he did not get an A+.
+In case \mybf{4}, you likewise could not call him a liar since he did not get the A+ and did not serve pizza.
+Thus we have following truth table for $P\implies Q$.
+$$
+\begin{tabular}{cc|c}
+$P$ & $Q$ & $P\implies Q$\\ \hline
+$T$ & $T$ & $T$\\
+$T$ & $F$ & $F$\\
+$F$ & $T$ & $T$\\
+$F$ & $F$ & $T$
+\end{tabular}
+$$
+And actually, $P\iff Q$ is true whenever $P$ and $Q$ have same truth value.
+Thus we have following truth table.
+$$
+\begin{tabular}{cc|c}
+$P$ & $Q$ & $P\iff Q$\\ \hline
+$T$ & $T$ & $T$\\
+$T$ & $F$ & $F$\\
+$F$ & $T$ & $F$\\
+$F$ & $F$ & $T$
+\end{tabular}
+$$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Logical Equivalences}
+
+\begin{defn}
+Two logical expression $X$, $Y$ are \term{logically equivalent}
+if they have the same truth value for each assignment of truth values to the variables.
+And a \term{tautology} is a logical expression which is true no matter what the truth values of its variables.
+\end{defn}
+
+
+\begin{eg}
+Show that $P\implies Q$ and $(\neg P)\vee Q$ are logically equivalent,
+and so the expression $R$ given by $(P\implies Q)\iff((\neg P)\vee Q)$ is a tautology.
+\end{eg}
+\begin{sol}
+Consider truth tables;
+$$
+\begin{tabular}{cc|c|c|c|c}
+$P$ & $Q$ & $P\implies Q$ & $\neg P$ & $(\neg P)\vee Q$ & R\\ \hline
+$T$ & $T$ & $T$ & $F$ & $T$ & $T$\\
+$T$ & $F$ & $F$ & $F$ & $F$ & $T$\\
+$F$ & $T$ & $T$ & $T$ & $T$ & $T$\\
+$F$ & $F$ & $T$ & $T$ & $T$ & $T$
+\end{tabular}
+$$
+Thus they are logically equivalent.
+So $R$ is a tautology.
+\end{sol}
+
+
+We may substitute $P$ for $\neg(\neg P)$ whenever we wish, and vise versa.
+Similarly, $P\vee Q$ is equivalent to $Q\vee P$, and $P\wedge Q$ is equivalent to $Q\wedge P$.
+
+\begin{eg}[Elementary logical Equivalences]
+Whenever $P$ and $Q$ are statements, we have following logical equivalences
+$$
+\begin{tabular}{llcl}
+\mybf{1.} & $\neg(P\wedge Q)$ & $\iff$ & $(\neg P)\vee (\neg Q)$\\
+\mybf{2.} & $\neg(P\vee Q)$ & $\iff$ & $(\neg P)\wedge (\neg Q)$\\
+\mybf{3.} & $\neg(P\implies Q)$ & $\iff$ & $P\wedge (\neg Q)$\\
+\mybf{4.} & $P\iff Q$ & $\iff$ & $(P \implies Q)\wedge (Q \implies P)$\\
+\mybf{5.} & $P\vee Q$ & $\iff$ & $(\neg P)\implies Q$\\
+\mybf{6.} & $P\implies Q$ & $\iff$ & $(\neg Q)\implies (\neg P)$\\
+\end{tabular}
+$$
+Equivalences \mybf{1} and \mybf{2} are called \term{de Morgan's laws}.
+
+Equivalences \mybf{3} and \mybf{4} restate the definitions of the conditional and biconditional.
+A conditional statement is false precisely when the hypothesis is true and the conclusion is false.
+The biconditional is true precisely when the conditional and its converse are both true.
+
+Each side of \mybf{5} is false precisely when $P$ fails and $Q$ fails.
+Each side of \mybf{6} is false precisely when $P$ true and $Q$ fails.
+\end{eg}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Logical Connectives and Membership in Sets}
+Let $P(x)$ and $Q(x)$ be statements about an element $x$ from a universe $U$.
+Often we write a conditional statement $(\forall x\in U)(P(x)\implies Q(x))$
+as $P(x)\implies Q(x)$ or simply $P\implies Q$ with an implicit universal quantifier.
+
+The hypothesis $P(x)$ can be interpreted as a universal quantifier in another way.
+With $A=\{x\in U\,|\, \text{$P(x)$ is true}\}$, the statement $P(x)\implies Q(x)$ can be
+written as $(\forall x\in A)Q(x)$.
+
+Another interpretation of $P(x)\implies Q(x)$ uses set inclusion.
+With $B=\{x\in U\,|\, \text{$Q(x)$ is true}\}$, the conditional statement has the same meaning as
+the statement $A\subseteq B$.
+The converse statement $Q(x)\implies P(x)$ is $B\subseteq A$.
+Thus the biconditional $P\iff Q$ is equivalent to $A=B$.
+
+
+\begin{eg}
+Let $P$ be the statement of membership in $A$ and
+$Q$ be the statement of membership in $B$.
+Then we have following equivalences.
+$$
+\begin{tabular}{lcccccc}
+$x\in A^c$ & $\iff$ & not $(x\in A)$ & $\iff$ & $\neg (x\in A)$ & $\iff$ & $\neg P$\\
+$x\in A\cup B$ & $\iff$ & $(x\in A)$ or $(x\in B)$ & $\iff$ & $(x\in A)\vee(x\in B)$ & $\iff$ & $P\vee Q$\\
+$x\in A\cap B$ & $\iff$ & $(x\in A)$ and $(x\in B)$ & $\iff$ & $(x\in A)\wedge(x\in B)$ & $\iff$ & $P\wedge Q$\\
+$A\subseteq B$ & $\iff$ & $(\forall x\in A)(x\in B)$ & $\iff$ & $(x\in A)\implies(x\in B)$ & $\iff$ & $P\implies Q$
+\end{tabular}
+$$
+\end{eg}
+
+
+In the language of sets, de Morgan's laws became
+\[
+(A\cap B)^c = A^c \cup B^c\tag{*}
+\]
+We verify \mybf{*} by translation into a logical equivalence about membership.
+Given an element $x$,
+Let $P$ be the property $x\in A$, and let $Q$ be the property $x\in B$.
+Then
+\begin{align*}
+x\in (A\cap B)^c & \iff \neg(P\wedge Q)\\
+& \iff (\neg P)\vee(\neg Q)\\
+& \iff (x\not\in A)\vee(x\not\in B)\\
+& \iff (x\in A^c)\vee(x\in B^c)\\
+& \iff x\in A^c\cup B^c
+\end{align*}
+Alternatively, a Vann diagram makes the reasoning clear.
+
+
+\begin{hw}
+Verify the de Morgan's laws $(A\cup B)^c = A^c \cap B^c$ using logical equivalence about membership.
+\end{hw}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proofs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A proof of a mathematical statement is a logical argument which shows the truth of the statement.
+The logical argument consists of several steps provided by implications.
+In this chapter, we will describe a variety of methods of proof
+so that students can apply to proving a mathematical statement.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Direct Proofs}
+
+Most of theorems are of the form $P\implies Q$.
+Since the statement is necessarily true if $P$ is false,
+we only need consider the case when $P$ is true.
+Then form the truth table we know that $P\implies Q$ is true whenever $Q$ is also true.
+
+Thus to prove that $P\implies Q$ is true,
+it is sufficient to assume that $P$ is true and deduce $Q$ is true by logical arguments.
+This is the \term{direct proof}.
+
+
+\begin{eg}\label{eg:dproof}
+Show that for positive real numbers $a$ and $b$, $a<b\implies a^2<b^2$.
+\end{eg}
+\begin{sol}
+The statement
+\begin{quotation}
+For positive real numbers $a$ and $b$, $a<b\implies a^2<b^2$.
+\end{quotation}
+consists of
+\begin{myEnum}
+\item quantifier: for all positive real number $a$ and $b$
+\item hypothesis: $a<b$
+\item conclusion: $a^2<b^2$
+\end{myEnum}
+We will deduce the conclusion from quantifiers and hypothesis using logical arguments as follows;
+
+Since $a$ is a positive real number, we have
+\begin{align*}
+a< b & \implies a^2 < ab\tag{multiplying through by $a>0$}
+\intertext{And since $b$ is also a positive,}
+a< b & \implies ab < b^2\tag{multiplying through by $b>0$}
+\intertext{Thus we have}
+a< b & \implies (a^2 < ab)\ \text{and}\ (ab < b^2)
+\end{align*}
+Therefore if $a<b$, then $a^2<b^2$.
+\end{sol}
+
+This example highlights the fact that in constructing a proof as a chain of implications
+we repeatedly use
+\[
+[(P\implies Q)\ \text{and}\ (Q\implies R)]\implies (P\implies R)
+\]
+which can be proved by using a truth table.
+
+
+When proving universal implications it is often difficult to consider all the objects
+satisfying the hypothesis.
+Then we usually divide the hypothesis to several cases.
+
+\begin{eg}[Proof by Cases]\label{eg:cases}
+Prove that $a^2>0$ for non-zero real number $a$.
+\end{eg}
+\begin{sol}
+Here
+\begin{myEnum}
+\item quantifier: for non-zero real number $a$
+\item conclusion: $a^2>0$
+\end{myEnum}
+From the quantifier, we have
+\begin{align*}
+a\neq 0 & \implies a>0\ \text{or}\ a<0\tag{①}
+\intertext{However, by the multiplication law,}
+a > 0 & \implies a^2 >0
+\intertext{and}
+a < 0 & \implies a^2 >0
+\intertext{Hence}
+a>0\ \text{or}\ a<0 & \implies a^2>0\tag{②}
+\end{align*}
+Therefore, putting together statement ① and ② we have $a\neq 0\implies a^2>0$.
+\end{sol}
+
+
+
+\begin{eg}[Constructing Proofs Backwards]
+Prove that $a<b\implies 4ab<(a+b)^2$ for real numbers $a$ and $b$.
+\end{eg}
+\begin{sol}
+Here
+\begin{myEnum}
+\item quantifier: for non-zero real number $a$
+\item hyphothesis: $a<b$
+\item conclusion: $4ab<(a+b)^2$
+\end{myEnum}
+A difficulty of proof is that the conclusion is more complicated than hyphothesis
+and it is not immediately clear how to reach this more complicated statement.
+In such situation, it is often best to start with the more complicated statement
+and to simplify.
+In this case, simplifying the conclusion leads to the construction of a proof backwards.
+\begin{align*}
+4ab < (a+b)^2 & \Leftarrow 4ab < a^2 + 2ab + b^2\\
+& \Leftarrow 0 < a^2 - 2ab + b^2\\
+& \Leftarrow 0 < (a - b)^2\\
+& \Leftarrow 0 \neq a - b\tag{by Example~\ref{eg:cases}}\\
+& \Leftarrow a\neq b\\
+& \Leftarrow a < b
+\end{align*}
+Thus $a<b\implies 4ab<(a+b)^2$.
+\end{sol}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Contrapositive}
+\TIP{Contrapositive = 대우}
+
+The direct method can be inconvenient and does not always work.
+In this section we will consider a logically equivalent
+but very common and useful method of proof.
+
+The \term{contrapositive} of $P\implies Q$ is $\neg Q\implies \neg P$.
+The equivalence between a conditional and its contrapositive allows us
+to prove $P\implies Q$ by proving $\neg Q\implies \neg P$.
+This is the \term{contrapositive method}.
+
+
+\begin{eg}\label{eg:count}
+Consider the statement
+\begin{quotation}
+Let $f(x)=mx+b$. If $x\neq y$, then $f(x)\neq f(y)$.\hfill\mybf{*}
+\end{quotation}
+The direct method considers $x<y$ and $x>y$ separately and obtain $f(x)<f(y)$ or $f(x)>f(y)$.
+This unsatisfying analysis by cases results from \myem{not equals} being a messier condition than \myem{equals}.
+
+We can use the contrapositive to retain the language of equalities and reduce analysis by cases.
+The contrapositive of the statement \mybf{*} is
+\begin{quotation}
+Let $f(x)=mx+b$. If $f(x) = f(y)$, then $x = y$. 
+\end{quotation}
+When $f(x)=f(y)$, we obtain $mx+b = my +b$ and then $mx=my$.
+If $m\neq 0$, then we obtain $x=y$.
+
+If $m=0$, then we cannot divide by $m$, and actually the statement is false.
+Thus the statement is true if and only if $m\neq 0$.
+\end{eg}
+
+
+A universally quantified statement like \myem{$(\forall x\in U)[P(x)\implies Q(x)]$}
+can be disproved by finding an element $x$ in $U$ such that $P(x)$ is true and $Q(x)$ is false.
+Such an element $x$ is a \term{counterexample}.
+In Example~\ref{eg:count}, $m=0$ is a conuterexample to a claim that the implication holds for all $m$.
+
+
+\begin{eg}
+Prove that if $a$ is less than or equal to every real number greater than $b$, then $a\leq b$.
+\end{eg}
+\begin{sol}
+The direct method goes nowhere,
+but when we say \myem{suppose not}, the light begins to dawn.
+If $a>b$, then $a>\frac{a+b}{2}>b$.
+Thus $a$ is not less then or equal to every number greater than $b$.
+We have proved the contrapositive of the desired statement.
+\end{sol}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Indirect Proof}
+
+\TIP{Method of Contradiction = 귀류법}
+After negating both sides of $(P\implies Q) \iff [(\neg P)\vee Q]$, we have
+\[ 
+\neg (P\implies Q) \iff [P\wedge (\neg Q)].
+\]
+Thus
+\[ 
+(P\implies Q) \iff \neg [P\wedge (\neg Q)].
+\]
+Hence we can prove $P\implies Q$ by proving $P$ and $\neg Q$ cannot both be true.
+We do this by obtaining a contradiction after assuming both $P$ and $\neg Q$.
+This is the \term{method of contradiction} or \term{indirect proof}.
+
+It may be useful to present a template for writing out these proofs.
+Suppose that we are writing out a formal proof of the statement $P$
+using the method of contraction.
+We would set out the proof as follows.
+
+\HintBox{Template for Method of Contradiction}{
+Suppose, for contradiction, that the statement $Q$ is false.
+
+Then [present some argument which leads to a contradiction of some sort].
+
+Hence our assumption that $Q$ is false must be false.
+
+Thus $Q$ is true as required.
+}
+
+\begin{eg}
+Show that among the numbers $y_1$, $\ldots$, $y_n$, some number is as large as the average.
+\end{eg}
+\TIP{Let $Y=y_1+\cdots+y_n$, then the \term{average} $z$ is $Y/n$.}
+\begin{sol}
+An indirect proof of the claim begins,
+\myem{suppose that the conclusion is false}.
+Thus $y_i < z$ for all $y_i$ in the list.
+If we sum these inequalities, we obtain
+$Y < nz$,
+but this contradicts the definition of $z$, which yields
+$Y=nz$.
+Here the assumption that each element is too small must be false.
+
+A direct proof constructs the desired number.
+Let $y^*$ be the largest number in the set.
+We prove that this candidate is as large as the average.
+Since $y_i \leq y^*$, we sum the inequalities to obtain $Y<ny^*$
+and then divide by $n$ to obtain $z\leq y^*$.
+\end{sol}
+
+
+
+\begin{eg}
+Show that there is no largest real number.
+\end{eg}
+\begin{sol}
+If there is a largest real number $z$, then for all $x\in\mathbb{R}$, we have $z\geq x$.
+When $x$ is the real number $z+1$, this yields $z\geq z+1$.
+Subtracting $z$ from both sides yields $0\geq 1$.
+This is a contradiction, and thus there is no largest real number.
+\end{sol}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises for Chapter~\ref{chap:sets} to \ref{chap:language}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\TIP{$(a,b)=\{x\in\mathbb{R}\,|\, a<x<b\}$
+
+$[c,d]=\{x\in\mathbb{R}\,|\, c\leq x\leq d\}$
+}
+\begin{hw}
+Prove that, if $a\leq b$, then $[a,b]\subseteq (c,d)$ if and only if $c<a$ and $b<d$.
+\end{hw}
+
+\begin{hw}
+Prove that, if $A\cap B \subseteq C$ and $x\in B$, then $x\not\in A-C$.
+\end{hw}
+
+\begin{hw}
+Prove that, for subsets of a universal set $U$, $A\subseteq B$ if and only if $B^c\subseteq A^c$.
+\end{hw}
+
+\begin{hw}
+Prove by contradiction that there do not exist integer $m$ and $n$ such that $14m+21n=100$.
+\end{hw}
+
+\begin{hw}
+Prove by contradiction that for any integer $n$, $n^2$ is odd implies $n$ is odd.
+\end{hw}
+
+\begin{hw}
+Prove that if $a$ is a real number such that $a^2\geq 7a$, then $a\leq 0$ or $a\geq 7$.
+\end{hw}
+
+\begin{hw}
+Prove that, for all real number $a$ and $b$,
+\begin{myEnum}
+\item $|a|<|b|$ if and only if $a^2<b^2$.
+\item $|a|=|b|$ if and only if $a^2=b^2$.
+\end{myEnum}
+\end{hw}
+
+\begin{hw}
+Prove that, for all real number $a$ and $b$, $|a+b|\leq |a|+|b|$.
+Give a necessary and sufficient condition for equality.
+\end{hw}
+
+
